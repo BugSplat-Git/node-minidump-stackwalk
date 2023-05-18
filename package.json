@@ -1,0 +1,51 @@
+{
+  "name": "node-minidump-stackwalk",
+  "version": "1.0.0",
+  "description": "Node.js wrapper for Breakpad's minidump-stackwalk",
+  "main": "./dist/index.js",
+  "bin": {
+    "node-minidump-stackwalk": "./dist/bin/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prestart": "mkdirp ./out",
+    "start": "ts-node ./bin/index.ts -m -p darwin ./spec/support/minidump/minidump.dmp ./spec/support/symbols",
+    "build": "tsc && copyfiles ./bin/**/* -e ./bin/index.ts dist",
+    "test": "ts-node ./node_modules/.bin/jasmine",
+    "prerelease": "npm run build",
+    "release": "npm publish --access public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BugSplat-Git/node-minidump-stackwalk.git"
+  },
+  "keywords": [
+    "bugsplat",
+    "exception",
+    "crash",
+    "reporting",
+    "breakpad",
+    "crashpad",
+    "minidump",
+    "stackwalk",
+    "sym",
+    "dmp"
+  ],
+  "author": "BugSplat",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BugSplat-Git/node-minidump-stackwalk/issues"
+  },
+  "homepage": "https://github.com/BugSplat-Git/node-minidump-stackwalk#readme",
+  "dependencies": {
+    "@types/jasmine": "^4.3.1",
+    "@types/node": "^18.11.17",
+    "copyfiles": "^2.4.1",
+    "jasmine": "^4.5.0",
+    "mkdirp": "^2.1.6",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  }
+}
