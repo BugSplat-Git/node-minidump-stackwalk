@@ -12,8 +12,9 @@
   "scripts": {
     "prestart": "mkdirp ./out",
     "start": "ts-node ./bin/index.ts -m -p darwin ./spec/support/minidump/minidump.dmp ./spec/support/symbols",
+    "start:win32": "ts-node ./bin/index.ts -m -p win32 ./spec/support/minidump/minidump.dmp ./spec/support/symbols",
     "build": "tsc && copyfiles ./bin/**/* -e ./bin/index.ts dist",
-    "test": "ts-node ./node_modules/.bin/jasmine",
+    "test": "ts-node ./node_modules/jasmine/bin/jasmine",
     "prerelease": "npm run build",
     "release": "npm publish --access public"
   },
@@ -40,10 +41,10 @@
   },
   "homepage": "https://github.com/BugSplat-Git/node-minidump-stackwalk#readme",
   "dependencies": {
-    "@types/jasmine": "^4.3.1",
+    "@types/jasmine": "^4.3.2",
     "@types/node": "^18.11.17",
     "copyfiles": "^2.4.1",
-    "jasmine": "^4.5.0",
+    "jasmine": "^5.0.1",
     "mkdirp": "^2.1.6",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.4"

@@ -1,7 +1,7 @@
 import path from "path";
 import { Platform, minidumpStackwalk, minidumpStackwalkSync } from "../src/minidump-stackwalk";
 
-const platform = process.platform === 'darwin' ? Platform.darwin : Platform.bullseye;
+const platform = process.platform as Platform;
 const minidumpPath = path.join(__dirname, 'support', 'minidump', 'minidump.dmp');
 const symbolsPath = path.join(__dirname, 'support', 'symbols');
 

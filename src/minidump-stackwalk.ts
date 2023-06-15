@@ -21,6 +21,7 @@ export interface MinidumpStackwalkOptions {
 export enum Platform {
     darwin = 'darwin',
     bullseye = 'bullseye',
+    win32 = 'win32',
 }
 
 export async function minidumpStackwalk(minidumpPath: string, symbolPaths: Array<string>, platform: Platform = Platform.bullseye, options: MinidumpStackwalkOptions = {}): Promise<{ stdout: string, stderr: string }> {
@@ -32,7 +33,8 @@ export function minidumpStackwalkSync(minidumpPath: string, symbolPaths: Array<s
 }
 
 function createCommand(minidumpPaths: string, symbolPaths: Array<string>, platform: Platform = Platform.bullseye, options: MinidumpStackwalkOptions): string {
-    const minidumpStackwalkPath = path.join(__dirname, `../bin/${platform}/minidump_stackwalk`);
+    const minidumpStackwalkFileName = platform === Platform.win32 ? 'minidump_stackwalk.exe' : 'minidump_stackwalk';
+    const minidumpStackwalkPath = path.join(__dirname, `../bin/${platform}/${minidumpStackwalkFileName}`);
     const supported = fs.existsSync(minidumpStackwalkPath);
     const opts = [];
 
