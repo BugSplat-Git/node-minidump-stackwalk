@@ -1,6 +1,6 @@
 {
   "name": "node-minidump-stackwalk",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Node.js wrapper for Breakpad's minidump-stackwalk",
   "main": "./dist/index.js",
   "bin": {
