@@ -10,7 +10,7 @@ const symbolsPath = path.join(__dirname, 'support', 'symbols');
 
 describe('command line', () => {
     it('should output symbolicated minidump', async () => {
-        const { stdout, stderr } = await exec(`ts-node ${testScript} -m -p ${platform} ${minidumpPath} ${symbolsPath}`);
+        const { stdout, stderr } = await exec(`npx ts-node ${testScript} -m -p ${platform} ${minidumpPath} ${symbolsPath}`);
 
         expect(stderr).toBeFalsy();
         expect(stdout).toContain('mainwindow.cpp|18');
